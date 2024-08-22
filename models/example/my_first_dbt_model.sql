@@ -7,7 +7,7 @@
     Try changing "table" to "view" below
 */
 
-{{ config(materialized='view') }}
+{{ config(materialized='table') }}
 
 with source_data as (
 
@@ -17,7 +17,9 @@ with source_data as (
 
 )
 
-select *
+select 
+    cast(id as integer) as id,
+    cast(id as varchar) as id_varchar
 from source_data
 
 /*
